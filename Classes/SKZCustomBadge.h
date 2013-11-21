@@ -24,7 +24,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface CustomBadge : UIView {
+@interface SKZCustomBadge : UIView {
 	
 	NSString *badgeText;
 	UIColor *badgeTextColor;
@@ -47,8 +47,8 @@
 @property(nonatomic,readwrite) CGFloat badgeCornerRoundness;
 @property(nonatomic,readwrite) CGFloat badgeScaleFactor;
 
-+ (CustomBadge*) customBadgeWithString:(NSString *)badgeString;
-+ (CustomBadge*) customBadgeWithString:(NSString *)badgeString withStringColor:(UIColor*)stringColor withInsetColor:(UIColor*)insetColor withBadgeFrame:(BOOL)badgeFrameYesNo withBadgeFrameColor:(UIColor*)frameColor withScale:(CGFloat)scale withShining:(BOOL)shining;
++ (SKZCustomBadge*) customBadgeWithString:(NSString *)badgeString;
++ (SKZCustomBadge*) customBadgeWithString:(NSString *)badgeString withStringColor:(UIColor*)stringColor withInsetColor:(UIColor*)insetColor withBadgeFrame:(BOOL)badgeFrameYesNo withBadgeFrameColor:(UIColor*)frameColor withScale:(CGFloat)scale withShining:(BOOL)shining;
 - (void) autoBadgeSizeWithString:(NSString *)badgeString;
 
 @end
