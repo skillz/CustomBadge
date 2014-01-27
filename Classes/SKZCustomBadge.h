@@ -40,6 +40,7 @@
 @property(nonatomic,retain) UIColor *badgeTextColor;
 @property(nonatomic,retain) UIColor *badgeInsetColor;
 @property(nonatomic,retain) UIColor *badgeFrameColor;
+@property(nonatomic,retain) UIColor *badgeShadowColor;
 
 @property(nonatomic,readwrite) BOOL badgeFrame;
 @property(nonatomic,readwrite) BOOL badgeShining;
