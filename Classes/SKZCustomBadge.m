@@ -254,7 +254,8 @@
 	[badgeText release];
 	[badgeTextColor release];
 	[badgeInsetColor release];
-	[badgeFrameColor release];	
+	[badgeFrameColor release];
+    self.badgeShadowColor = nil;
     [super dealloc];
 }
 
