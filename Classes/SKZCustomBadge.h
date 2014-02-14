@@ -24,17 +24,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface SKZCustomBadge : UIView {
-	
-	NSString *badgeText;
-	UIColor *badgeTextColor;
-	UIColor *badgeInsetColor;
-	UIColor *badgeFrameColor;
-	BOOL badgeFrame;
-	BOOL badgeShining;
-	CGFloat badgeCornerRoundness;
-	CGFloat badgeScaleFactor;
-}
+@interface SKZCustomBadge : UIView
 
 @property(nonatomic,retain) NSString *badgeText;
 @property(nonatomic,retain) UIColor *badgeTextColor;

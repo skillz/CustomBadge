@@ -24,20 +24,13 @@
 #import "SKZCustomBadge.h"
 
 @interface SKZCustomBadge()
-- (void) drawRoundedRectWithContext:(CGContextRef)context withRect:(CGRect)rect;
-- (void) drawFrameWithContext:(CGContextRef)context withRect:(CGRect)rect;
+
+- (void)drawRoundedRectWithContext:(CGContextRef)context withRect:(CGRect)rect;
+- (void)drawFrameWithContext:(CGContextRef)context withRect:(CGRect)rect;
+
 @end
 
 @implementation SKZCustomBadge
-
-@synthesize badgeText;
-@synthesize badgeTextColor;
-@synthesize badgeInsetColor;
-@synthesize badgeFrameColor;
-@synthesize badgeFrame;
-@synthesize badgeCornerRoundness;
-@synthesize badgeScaleFactor;
-@synthesize badgeShining;
 
 // I recommend to use the allocator customBadgeWithString
 - (id) initWithString:(NSString *)badgeString withScale:(CGFloat)scale withShining:(BOOL)shining
@@ -62,7 +55,13 @@
 }
 
 // I recommend to use the allocator customBadgeWithString
-- (id) initWithString:(NSString *)badgeString withStringColor:(UIColor*)stringColor withInsetColor:(UIColor*)insetColor withBadgeFrame:(BOOL)badgeFrameYesNo withBadgeFrameColor:(UIColor*)frameColor withScale:(CGFloat)scale withShining:(BOOL)shining 
+- (id) initWithString:(NSString *)badgeString
+      withStringColor:(UIColor*)stringColor
+       withInsetColor:(UIColor*)insetColor
+       withBadgeFrame:(BOOL)badgeFrameYesNo
+  withBadgeFrameColor:(UIColor*)frameColor
+            withScale:(CGFloat)scale
+          withShining:(BOOL)shining
 {
 	self = [super initWithFrame:CGRectMake(0, 0, 25, 25)];
 	if(self!=nil) {
@@ -85,7 +84,7 @@
 
 
 // Use this method if you want to change the badge text after the first rendering 
-- (void) autoBadgeSizeWithString:(NSString *)badgeString
+- (void)autoBadgeSizeWithString:(NSString *)badgeString
 {
 	CGSize retValue;
 	CGFloat rectWidth, rectHeight;
@@ -98,9 +97,9 @@
 	if ([badgeString length]>=2) {
 		flexSpace = [badgeString length];
 		rectWidth = 25 + (stringSize.width + flexSpace); rectHeight = 25;
-		retValue = CGSizeMake(rectWidth*badgeScaleFactor, rectHeight*badgeScaleFactor);
+		retValue = CGSizeMake(rectWidth*self.badgeScaleFactor, rectHeight*self.badgeScaleFactor);
 	} else {
-		retValue = CGSizeMake(25*badgeScaleFactor, 25*badgeScaleFactor);
+		retValue = CGSizeMake(25*self.badgeScaleFactor, 25*self.badgeScaleFactor);
 	}
 	self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, retValue.width, retValue.height);
 	self.badgeText = badgeString;
@@ -109,16 +108,28 @@
 
 
 // Creates a Badge with a given Text 
-+ (SKZCustomBadge*) customBadgeWithString:(NSString *)badgeString
++ (instancetype) customBadgeWithString:(NSString *)badgeString
 {
-	return [[[self alloc] initWithString:badgeString withScale:1.0 withShining:YES] autorelease];
+	return [[self alloc] initWithString:badgeString withScale:1.0 withShining:YES];
 }
 
 
 // Creates a Badge with a given Text, Text Color, Inset Color, Frame (YES/NO) and Frame Color 
-+ (SKZCustomBadge*) customBadgeWithString:(NSString *)badgeString withStringColor:(UIColor*)stringColor withInsetColor:(UIColor*)insetColor withBadgeFrame:(BOOL)badgeFrameYesNo withBadgeFrameColor:(UIColor*)frameColor withScale:(CGFloat)scale withShining:(BOOL)shining
++ (instancetype) customBadgeWithString:(NSString *)badgeString
+                       withStringColor:(UIColor*)stringColor
+                        withInsetColor:(UIColor*)insetColor
+                        withBadgeFrame:(BOOL)badgeFrameYesNo
+                   withBadgeFrameColor:(UIColor*)frameColor
+                             withScale:(CGFloat)scale
+                           withShining:(BOOL)shining
 {
-	return [[[self alloc] initWithString:badgeString withStringColor:stringColor withInsetColor:insetColor withBadgeFrame:badgeFrameYesNo withBadgeFrameColor:frameColor withScale:scale withShining:shining] autorelease];
+	return [[self alloc] initWithString:badgeString
+                        withStringColor:stringColor
+                         withInsetColor:insetColor
+                         withBadgeFrame:badgeFrameYesNo
+                    withBadgeFrameColor:frameColor
+                              withScale:scale
+                            withShining:shining];
 }
 
 
@@ -234,8 +245,8 @@
 	}
 	
 	if ([self.badgeText length]>0) {
-		[badgeTextColor set];
-		CGFloat sizeOfFont = 13.5*badgeScaleFactor;
+		[self.badgeTextColor set];
+		CGFloat sizeOfFont = 13.5*self.badgeScaleFactor;
 		if ([self.badgeText length]<2) {
 			sizeOfFont += sizeOfFont*0.20;
 		}
@@ -250,13 +261,7 @@
 }
 
 - (void)dealloc {
-	
-	[badgeText release];
-	[badgeTextColor release];
-	[badgeInsetColor release];
-	[badgeFrameColor release];
     self.badgeShadowColor = nil;
-    [super dealloc];
 }
 
 
